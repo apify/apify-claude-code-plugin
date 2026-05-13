@@ -1,0 +1,10 @@
+{
+  "name": "apify",
+  "version": "1.0.0",
+  "description": "Apify plugin for Claude Code — Apify MCP server, an `apify` routing subagent, and skills covering Actor development, actorization, SDK integration, and the ultimate scraper.",
+  "author": { "name": "Apify", "url": "https://apify.com" },
+  "homepage": "https://apify.com",
+  "repository": "https://github.com/apify/apify-claude-code-plugin",
+  "license": "Apache-2.0",
+  "keywords": ["apify", "web-scraping", "actors", "mcp", "automation"]
+}
