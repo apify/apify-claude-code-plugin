@@ -1,0 +1,24 @@
+{
+  "name": "apify",
+  "description": "Official Apify marketplace for Claude Code — web scraping, automation, and Actor development plugins.",
+  "owner": {
+    "name": "Apify",
+    "email": "support@apify.com"
+  },
+  "plugins": [
+    {
+      "name": "apify",
+      "source": ".",
+      "description": "Apify plugin for Claude Code — Apify MCP server, an `apify` routing subagent, and skills covering Actor development, actorization, SDK integration, and the ultimate scraper.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Apify"
+      },
+      "homepage": "https://apify.com",
+      "license": "Apache-2.0",
+      "keywords": ["apify", "web-scraping", "actors", "mcp", "automation"],
+      "category": "automation",
+      "tags": ["web-scraping", "data-extraction", "browser-automation", "apify-actors"]
+    }
+  ]
+}
