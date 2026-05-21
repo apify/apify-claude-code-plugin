@@ -18,17 +18,17 @@ Official Apify plugin for Claude Code — adds the Apify MCP server, one `apify`
 
 ## Installation
 
-Install the plugin directly from the Claude Code CLI:
+Add the Apify marketplace and install the plugin:
 
 ```bash
-claude plugin install apify
+/plugin marketplace add apify/apify-claude-code-plugin
+/plugin install apify@apify
 ```
 
-Or clone the repo and point Claude Code at it during development:
+Validate the installation:
 
 ```bash
-git clone https://github.com/apify/apify-claude-code-plugin /tmp/apify-claude-code
-claude --plugin-dir /tmp/apify-claude-code
+/plugin validate .
 ```
 
 ### Prerequisites
