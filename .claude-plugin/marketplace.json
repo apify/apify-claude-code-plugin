@@ -1,6 +1,6 @@
 {
   "name": "apify",
-  "description": "Official Apify marketplace for Claude Code — web scraping, automation, and Actor development plugins.",
+  "description": "Extract data from any website with thousands of trusted scrapers, crawlers, and automations from Apify Store. Integrate ready-made Actors to access all popular social media, video, e-commerce, search engines, maps, and travel sites. Build, debug, publish, and monetize new Actors on Apify.",
   "owner": {
     "name": "Apify",
     "email": "support@apify.com"
@@ -9,7 +9,7 @@
     {
       "name": "apify",
       "source": "./",
-      "description": "Apify plugin for Claude Code — Apify MCP server, an `apify` routing subagent, and skills covering Actor development, actorization, SDK integration, and the ultimate scraper.",
+      "description": "Extract data from any website with thousands of trusted scrapers, crawlers, and automations from Apify Store. Integrate ready-made Actors to access all popular social media, video, e-commerce, search engines, maps, and travel sites. Build, debug, publish, and monetize new Actors on Apify.",
       "version": "1.0.0",
       "author": {
         "name": "Apify"
