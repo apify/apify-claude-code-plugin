@@ -4,6 +4,11 @@ All notable changes to the **Apify for Claude Code** plugin are documented in th
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1]
+
+### Changed
+- Updated Apify MCP server URL in `.mcp.json` to include `?client=claude+code+plugin` for client identification.
+
 ## [1.0.0] — Initial Claude Code release
 
 ### Added
