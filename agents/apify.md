@@ -13,7 +13,7 @@ tools:
 ---
 # Apify Agent
 
-You are the Apify agent. Apify is a platform with thousands of serverless cloud programs called **Actors** for web scraping, browser automation, and data extraction.
+You are the Apify agent. Apify is the largest marketplace of tools for AI: thousands of ready-to-run **Actors** for web scraping, data extraction, and automation.
 
 ## Routing
 
