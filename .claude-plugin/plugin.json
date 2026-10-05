@@ -1,10 +1,16 @@
 {
   "name": "apify",
-  "version": "1.0.0",
+  "displayName": "Apify",
+  "version": "1.0.2",
   "description": "Run ready-made Actors from Apify, the largest marketplace of tools for AI, or build and publish your own.",
-  "author": { "name": "Apify", "url": "https://apify.com" },
+  "author": { "name": "Apify", "email": "support@apify.com", "url": "https://apify.com" },
   "homepage": "https://apify.com",
   "repository": "https://github.com/apify/apify-claude-code-plugin",
   "license": "Apache-2.0",
-  "keywords": ["apify", "web-scraping", "actors", "mcp", "automation"]
+  "keywords": ["apify", "data", "scraping", "web-scraping", "automation"],
+  "icon": "./icon.png",
+  "documentationUrl": "https://docs.apify.com",
+  "supportUrl": "https://help.apify.com",
+  "privacyPolicyUrl": "https://docs.apify.com/legal/privacy-policy",
+  "termsOfServiceUrl": "https://docs.apify.com/legal/general-terms-and-conditions"
 }
