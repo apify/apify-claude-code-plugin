@@ -10,13 +10,13 @@
       "name": "apify",
       "source": "./",
       "description": "Run ready-made Actors from Apify, the largest marketplace of tools for AI, or build and publish your own.",
-      "version": "1.0.0",
+      "version": "1.0.2",
       "author": {
         "name": "Apify"
       },
       "homepage": "https://apify.com",
       "license": "Apache-2.0",
-      "keywords": ["apify", "web-scraping", "actors", "mcp", "automation"],
+      "keywords": ["apify", "data", "scraping", "web-scraping", "automation"],
       "category": "automation",
       "tags": ["web-scraping", "data-extraction", "browser-automation", "apify-actors"]
     }
