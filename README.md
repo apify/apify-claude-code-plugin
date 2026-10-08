@@ -18,22 +18,21 @@ Official Apify plugin for Claude Code. It adds the Apify MCP server, one `apify`
 
 ## Installation
 
-Add the Apify marketplace and install the plugin:
+Requires the **Claude Code** CLI, installed and authenticated.
 
-```bash
-/plugin marketplace add apify/apify-claude-code-plugin
-/plugin install apify@apify
-```
+1. In Claude Code, run:
 
-Validate the installation:
+    ```text
+    /plugin install apify
+    ```
 
-```bash
-/plugin validate .
-```
+1. Review the plugin details, choose an install scope (**Install for you (user scope)** is the typical choice), and press Enter.
 
-### Prerequisites
+1. If prompted, run `/reload-plugins` to activate the plugin in the current session.
 
-- **Claude Code** CLI installed and authenticated.
+1. Run `/plugin` and open the **Installed** tab to confirm the `apify` plugin appears as enabled.
+
+If the command can't find the plugin, see [Troubleshooting](#troubleshooting). For plugin management and install scopes, see [Claude Code's plugin installation guide](https://code.claude.com/docs/en/discover-plugins).
 
 ## First-run setup
 
@@ -115,6 +114,17 @@ This plugin export does **not** include standalone helper scripts. Instead, the 
 The executable requirements come from the skills themselves: Route 1 uses the MCP server, Route 2 relies on the local `apify` CLI, and Route 3 uses the `apify-client` SDK.
 
 ## Troubleshooting
+
+**The install command can't find Apify.** Add the Apify marketplace, then install from it:
+
+```text
+/plugin marketplace add apify/apify-claude-code-plugin
+/plugin install apify@apify
+```
+
+Choose an install scope when prompted. If Claude Code requests a reload, run `/reload-plugins`, then open `/plugin` and check the **Installed** tab.
+
+**Validating a local checkout.** If you cloned this repo, run `/plugin validate .` from the repo root to check the plugin and marketplace manifests.
 
 **OAuth browser never opens / hangs.** See the "Working in headless / SSH environments" section above and switch to a CLI- or SDK-based path if needed.
 
