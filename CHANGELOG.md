@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 - Anthropic directory listing fields in `.claude-plugin/plugin.json`: `displayName`, `icon`, `documentationUrl`, `supportUrl`, `privacyPolicyUrl`, and `termsOfServiceUrl`.
-- `icon.png` plugin icon.
+- Plugin icon for the directory listing.
 - `author.email` in `.claude-plugin/plugin.json`.
 
 ### Changed

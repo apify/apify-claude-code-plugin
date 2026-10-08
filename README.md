@@ -114,6 +114,24 @@ This plugin export does **not** include standalone helper scripts. Instead, the 
 
 The executable requirements come from the skills themselves: Route 1 uses the MCP server, Route 2 relies on the local `apify` CLI, and Route 3 uses the `apify-client` SDK.
 
+## Data and credentials
+
+The plugin ships only text files (Markdown, JSON, and the license) and an icon image. It has no hooks, scripts, or executables, so it has no code of its own that reads, stores, or sends your Apify credentials. Everything it does goes through one of the three setup paths:
+
+| Path | What leaves your machine | Where it goes | Which credential is used |
+|---|---|---|---|
+| Path 1 — MCP server | Your Actor searches, Actor inputs, and requests for run results and docs | `https://mcp.apify.com` | OAuth sign-in with your Apify account. Claude stores the OAuth token, not the plugin. |
+| Path 2 — Apify CLI | Commands Claude runs with your local `apify` CLI, for example Actor runs and `apify push`, which uploads your Actor's source code | Apify API | The CLI's own login from `apify login`, or `APIFY_TOKEN` if you set it for headless use |
+| Path 3 — SDK integration | Nothing at setup. Claude writes code into your application. | Apify API, when you run your application | Your application reads `APIFY_TOKEN` from its own environment |
+
+Also good to know:
+
+- **Your Apify account does the work.** Actors run on the Apify platform under your account and use its credits, including paid Actors. Run results are stored in your account's datasets and key-value stores, and the results Claude asks for are returned into the conversation.
+- **Usage attribution.** The MCP server URL includes `?client=claude+code+plugin`, and Actor runs started through the CLI pass `--user-agent apify-claude-code-plugin/…`, so Apify can see that a request came from this plugin.
+- **Public docs.** To answer questions, Claude may fetch public pages such as `https://docs.apify.com/llms.txt` and Apify Store pages. No credentials are sent with these requests.
+
+Apify processes this data under its [privacy policy](https://docs.apify.com/legal/privacy-policy).
+
 ## Troubleshooting
 
 **OAuth browser never opens / hangs.** See the "Working in headless / SSH environments" section above and switch to a CLI- or SDK-based path if needed.
