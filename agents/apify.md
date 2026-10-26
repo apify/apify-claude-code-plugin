@@ -9,7 +9,7 @@ tools:
   - Glob
   - Grep
   - Bash
-  - mcp__apify
+  - mcp__plugin_apify_apify
 ---
 # Apify Agent
 
