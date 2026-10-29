@@ -1,7 +1,7 @@
 {
   "name": "apify",
   "displayName": "Apify",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Run ready-made Actors from Apify, the largest marketplace of tools for AI, or build and publish your own.",
   "author": { "name": "Apify", "email": "support@apify.com", "url": "https://apify.com" },
   "homepage": "https://apify.com",
