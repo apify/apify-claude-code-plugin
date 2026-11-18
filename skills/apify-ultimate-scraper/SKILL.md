@@ -23,16 +23,12 @@ This rule does **not** apply to status/auth commands (`apify info`, `apify --ver
 
 ## Prerequisites
 
-- Apify CLI v1.10.0+ (`npm install -g apify-cli`). This matches the auth rules below.
+- Apify CLI v1.10.0+ (`npm install -g apify-cli`).
 - Authenticated session (see below)
 
 ## Authentication
 
-On CLI **v1.10.0 and earlier**, only `apify login --token TOKEN` authenticates. Exporting `APIFY_TOKEN` does not.
-
-From CLI **v1.10.1**, `APIFY_TOKEN` takes precedence over the stored login. `export APIFY_TOKEN=...` applies on v1.10.1 and later only.
-
-Generate a token at https://console.apify.com/settings/integrations. Do not print it.
+Authenticate the CLI with `apify login` (opens browser). For other login methods (for example headless or CI environments), see the [Apify CLI login reference](https://docs.apify.com/cli/docs/reference#apify-auth-login--apify-login).
 
 ## Workflow
 
@@ -55,13 +51,13 @@ If this fails, install the CLI first:
     # Auth check — do NOT pipe to /dev/null, you need to see errors
     apify info 2>&1
 ```
-   If this shows the user is not logged in, instruct them to authenticate with a token:
+   If this shows the user is not logged in, instruct them to log in (opens browser):
 
 ```bash
-    apify login --token TOKEN
+    apify login
 ```
 
-3. Authenticated Apify CLI commands need file access to `~/.apify/`, where the CLI keeps its credentials. A host that sandboxes file access can deny this even when the login is valid; that is a sandbox problem, not a login problem.
+3. Authenticated Apify CLI commands need file access to `~/.apify/`. A host that sandboxes file access can deny this even when the login is valid; that is a sandbox problem, not a login problem.
 
 4. Assume many Apify commands block with zero output until completion, so allow at least 60 seconds before treating one as stuck. If your shell tool takes a timeout, raise it accordingly.
 

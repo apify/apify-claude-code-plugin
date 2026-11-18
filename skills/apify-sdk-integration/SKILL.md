@@ -26,9 +26,9 @@ Add Apify Actor execution to an existing application. This skill covers the `api
 
 ## Prerequisites
 
-The user needs an `APIFY_TOKEN`. Direct them to **Console > Settings > Integrations** at https://console.apify.com/settings/integrations to create one. If they don't have an account: https://console.apify.com/sign-up (free, no credit card).
+The user needs an Apify API token. Direct them to **Console > Settings > Integrations** at https://console.apify.com/settings/integrations?utm_source=claude-code&utm_medium=integrations to create one. If they don't have an account: https://console.apify.com/sign-up (free, no credit card).
 
-Store the token securely — environment variable or secrets manager, never hardcoded.
+The app loads the token from its own secret store or configuration, never hardcoded.
 
 ## Finding the Right Actor
 
@@ -51,7 +51,8 @@ npm install apify-client
 ```typescript
 import { ApifyClient } from 'apify-client';
 
-const client = new ApifyClient({ token: process.env.APIFY_TOKEN });
+// Load apifyToken from your app's secret store or configuration.
+const client = new ApifyClient({ token: apifyToken });
 
 const run = await client.actor('apify/web-scraper').call({
     startUrls: [{ url: 'https://example.com' }],
@@ -108,7 +109,7 @@ try {
     if (error.message?.includes('not found')) {
         // Actor ID is wrong or Actor was deleted
     } else if (error.statusCode === 401) {
-        // Invalid or missing APIFY_TOKEN
+        // Invalid or missing API token
     }
     throw error;
 }
@@ -130,9 +131,9 @@ When adding the dependency to `requirements.txt` or `pyproject.toml`, use `apify
 
 ```python
 from apify_client import ApifyClient
-import os
 
-client = ApifyClient(token=os.environ['APIFY_TOKEN'])
+# Load apify_token from your app's secret store or configuration.
+client = ApifyClient(token=apify_token)
 
 run = client.actor('apify/web-scraper').call(run_input={
     'startUrls': [{'url': 'https://example.com'}],
@@ -160,7 +161,7 @@ items = client.dataset(finished_run.default_dataset_id).list_items().items
 ```python
 from apify_client import ApifyClientAsync
 
-client = ApifyClientAsync(token=os.environ['APIFY_TOKEN'])
+client = ApifyClientAsync(token=apify_token)
 
 run = await client.actor('apify/web-scraper').call(run_input={
     'startUrls': [{'url': 'https://example.com'}],
@@ -177,7 +178,7 @@ For languages without an official client, use the REST API directly.
 
 ```
 POST https://api.apify.com/v2/actors/{actorId}/runs
-Authorization: Bearer <APIFY_TOKEN>
+Authorization: Bearer <your Apify API token>
 Content-Type: application/json
 
 { "startUrls": [{ "url": "https://example.com" }] }
@@ -187,14 +188,14 @@ Content-Type: application/json
 
 ```
 GET https://api.apify.com/v2/actor-runs/{runId}
-Authorization: Bearer <APIFY_TOKEN>
+Authorization: Bearer <your Apify API token>
 ```
 
 ### Get Dataset Items
 
 ```
 GET https://api.apify.com/v2/datasets/{datasetId}/items?format=json
-Authorization: Bearer <APIFY_TOKEN>
+Authorization: Bearer <your Apify API token>
 ```
 
 Full API reference: https://docs.apify.com/api/v2
