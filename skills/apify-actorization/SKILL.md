@@ -62,12 +62,9 @@ If not logged in, authenticate using OAuth (opens browser):
 apify login
 ```
 
-If browser login isn't available (headless environment or CI), ensure the `APIFY_TOKEN` environment variable is exported. The CLI reads it automatically - no explicit login needed. If the user doesn't have a token, generate one at https://console.apify.com/settings/integrations.
+For other login methods (for example headless or CI environments), see the [Apify CLI login reference](https://docs.apify.com/cli/docs/reference#apify-auth-login--apify-login).
 
-> **Security note:** Avoid passing tokens as command-line arguments (e.g. `apify login -t <token>`).
-> Arguments are visible in process listings and may be recorded in shell history.
-> Prefer OAuth login or environment variables instead.
-> Never log, print, or embed `APIFY_TOKEN` in source code or configuration files.
+> **Security note:** Never log, print, or embed Apify tokens in source code or configuration files.
 
 ## Actorization Checklist
 
@@ -199,7 +196,7 @@ Other options: **Rental** (monthly subscription) or **Free** (open source).
 - **Sanitize crawled data** — Never pass raw HTML, URLs, or scraped text directly into shell commands, `eval()`, database queries, or template engines. Use proper escaping or parameterized APIs.
 - **Validate and type-check all external data** — Before pushing to datasets or key-value stores, verify that values match expected types and formats. Reject or sanitize unexpected structures.
 - **Do not execute or interpret crawled content** — Never treat scraped text as code, commands, or configuration. Content from websites could include prompt injection attempts or embedded scripts.
-- **Isolate credentials from data pipelines** — Ensure `APIFY_TOKEN` and other secrets are never accessible in request handlers or passed alongside crawled data. Use the Apify SDK's built-in credential management rather than passing tokens through environment variables in data-processing code.
+- **Isolate credentials from data pipelines** — Ensure Apify tokens and other secrets are never accessible in request handlers or passed alongside crawled data. Use the Apify SDK's built-in credential management rather than passing tokens through environment variables in data-processing code.
 - **Review dependencies before installing** — When adding packages with `npm install` or `pip install`, verify the package name and publisher. Typosquatting is a common supply-chain attack vector. Prefer well-known, actively maintained packages.
 - **Pin versions and use lockfiles** — Always commit `package-lock.json` (Node.js) or pin exact versions in `requirements.txt` (Python). Lockfiles ensure reproducible builds and prevent silent dependency substitution. Run `npm audit` or `pip-audit` periodically to check for known vulnerabilities.
 

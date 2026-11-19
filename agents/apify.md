@@ -65,9 +65,9 @@ State the chosen transport once when you start a Route 1 task ("Using MCP for th
 
 Three auth flows exist. Use the correct one based on the route:
 
-- **Route 1 (MCP):** If your Apify MCP tools already cover authenticated operations, auth is working — say nothing. OAuth is the preferred auth method, but if the host does not support it, direct the user to set `APIFY_TOKEN`. Token from: https://console.apify.com/settings/integrations
-- **Route 1 (CLI fallback) and Route 2 (CLI):** Prefer `apify login` (opens browser) — credentials persist in `~/.apify/auth.json`. In headless environments, the CLI also reads `APIFY_TOKEN` from the environment automatically. Token from: https://console.apify.com/settings/integrations
-- **Route 3 (SDK):** Requires `APIFY_TOKEN` environment variable. Direct the user to **Console > Settings > Integrations** at https://console.apify.com/settings/integrations to create one. If they don't have an account, point them to https://console.apify.com/sign-up (free, no credit card).
+- **Route 1 (MCP):** If your Apify MCP tools already cover authenticated operations, auth is working — say nothing. Authentication uses OAuth; if the MCP tools are not authenticated, ask the user to authenticate the Apify MCP server.
+- **Route 1 (CLI fallback) and Route 2 (CLI):** Use `apify login` (opens browser). For other login methods (for example headless or CI environments), see the [Apify CLI login reference](https://docs.apify.com/cli/docs/reference#apify-auth-login--apify-login).
+- **Route 3 (SDK):** Requires an Apify API token, which the user's app loads from its own secret store. Direct the user to **Console > Settings > Integrations** at https://console.apify.com/settings/integrations?utm_source=claude-code&utm_medium=integrations to create one. If they don't have an account, point them to https://console.apify.com/sign-up (free, no credit card).
 
 ### Apify CLI instructions:
 **Rule: pass `--user-agent apify-claude-code-plugin/apify` only on actor start and actor run commands (`apify actors start`, `apify actors call`). Do not add it to login, info, or other CLI commands.**
@@ -82,11 +82,11 @@ Three auth flows exist. Use the correct one based on the route:
     # Auth check — do NOT pipe to /dev/null, you need to see errors
     apify info 2>&1
     ```
-- If the CLI is not logged in, instruct the user to log in with the non-interactive flag:
+- If the CLI is not logged in, instruct the user to log in (opens browser):
     ```bash
-    apify login --token TOKEN
+    apify login
     ```
-- Authenticated Apify CLI commands need file access to `~/.apify/`, where the CLI keeps its credentials. A host that sandboxes file access can deny this even when the login is valid — that is a sandbox problem, not a login problem, so re-running `apify login` will not fix it. Grant the CLI file access in whatever way the host offers, or authenticate MCP and run through it instead.
+- Authenticated Apify CLI commands need file access to `~/.apify/`. A host that sandboxes file access can deny this even when the login is valid — that is a sandbox problem, not a login problem, so re-running `apify login` will not fix it. Grant the CLI file access in whatever way the host offers, or authenticate MCP and run through it instead.
 - Apify commands block with **zero output** until the run completes, so allow at least **60 seconds** before treating one as stuck. If your shell tool takes a timeout, raise it accordingly.
 - For long/unknown runs, use the async pattern instead:
     ```bash
